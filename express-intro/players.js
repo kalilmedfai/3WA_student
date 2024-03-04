@@ -3,7 +3,7 @@ const app = express();
 
 const port = 3002;
 
-app.use(express.json()); // Ajout du middleware pour parser les requêtes JSON
+app.use(express.json());
 
 const players = [
     { id: 1, player: 'Vinicius Jr', club: 'Real Madrid' },
@@ -23,10 +23,9 @@ app.get('/api/players/:id', (req, res) => {
 });
 
 app.post('/api/players', (req, res) => {
-    // Ici, req.body est défini car le middleware express.json() a été utilisé pour parser les requêtes JSON
     const newPlayer = {
         id: players.length + 1,
-        player: req.body.player, // Vous pouvez maintenant accéder à la propriété player de req.body
+        player: req.body.player,
         club: req.body.club
     };
     players.push(newPlayer);
